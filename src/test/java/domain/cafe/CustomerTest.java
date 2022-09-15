@@ -15,12 +15,12 @@ public class CustomerTest {
     @DisplayName("커피를 주문한다.")
     void order(String menuName) {
         // given
-        Menu menu = new Menu();
-
-        // when
         Customer customer = new Customer();
 
+        // when
+        Coffee coffee = customer.order(new Menu(), menuName);
+
         // then
-        assertTrue(customer.order(menu, menuName) instanceof Coffee);
+        assertTrue(coffee instanceof Coffee);
     }
 }

@@ -1,11 +1,32 @@
 package domain.cafe;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Menu {
-    private List<MenuItem> menuList;
+    private List<MenuItem> menuItemList;
+
+    Menu(MenuItem... menuItemArr) {
+        this.menuItemList = Stream.of(menuItemArr)
+                             .collect(Collectors.toList());
+    }
 
     public MenuItem getMenuItem(String menuName) {
-        return new MenuItem();
+        return selectMenu(menuName);
     }    
+
+    private MenuItem selectMenu(String menuName) {
+        for (MenuItem menuItem : menuItemList) {
+            if (menuItem.getName().equals(menuName)) {
+                return menuItem;
+            }
+        }
+
+        return null;
+    }
+
+    
 }

@@ -23,7 +23,7 @@ public class Menu {
             }
         }
 
-        return null;
+        throw new NullPointerException("존재하지 않는 메뉴입니다.");
     }
 
     

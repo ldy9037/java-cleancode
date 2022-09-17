@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -31,4 +32,15 @@ public class MenuTest {
         assertThat(menuItem.getName()).isEqualTo(menuName);
     }
 
+    @Test
+    @DisplayName("존재하지 않는 메뉴를 선택할 경우 에러가 발생한다.")
+    public void getNotExistMenuItem() {
+        // given 
+        String menuName = "cappuccino";
+
+        // when * then
+        assertThatExceptionOfType(NullPointerException.class)
+                                    .isThrownBy(() -> menu.getMenuItem(menuName))
+                                    .withMessageMatching("존재하지 않는 메뉴입니다.");
+    }
 }

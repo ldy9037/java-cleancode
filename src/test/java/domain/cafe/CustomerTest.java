@@ -13,9 +13,10 @@ public class CustomerTest {
     void order(String menuName) {
         // given
         Customer customer = new Customer();
+        MenuItem menuItem = new MenuItem(menuName);
 
         // when
-        Coffee coffee = customer.order(new Menu(), menuName);
+        Coffee coffee = customer.order(new Menu(menuItem), menuName);
 
         // then
         assertTrue(coffee instanceof Coffee);

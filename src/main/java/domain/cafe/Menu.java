@@ -18,7 +18,7 @@ public class Menu {
 
     private MenuItem selectMenu(String menuName) {
         for (MenuItem menuItem : menuItemList) {
-            if (menuItem.getName().equals(menuName)) {
+            if (isSameName(menuItem, menuName)) {
                 return menuItem;
             }
         }
@@ -26,5 +26,8 @@ public class Menu {
         throw new NullPointerException("존재하지 않는 메뉴입니다.");
     }
 
+    private boolean isSameName(MenuItem menuItem, String menuName) {
+        return menuItem.getName().equals(menuName);
+    }
     
 }

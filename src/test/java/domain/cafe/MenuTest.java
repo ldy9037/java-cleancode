@@ -41,6 +41,6 @@ public class MenuTest {
         // when * then
         assertThatExceptionOfType(NullPointerException.class)
                                     .isThrownBy(() -> menu.getMenuItem(menuName))
-                                    .withMessageMatching("존재하지 않는 메뉴입니다.");
+                                    .withMessageMatching(ErrorMessage.NOT_EXIST_MENU_ERROR.getMessage());
     }
 }

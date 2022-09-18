@@ -23,7 +23,7 @@ public class Menu {
             }
         }
 
-        throw new NullPointerException("존재하지 않는 메뉴입니다.");
+        throw new NullPointerException(ErrorMessage.NOT_EXIST_MENU_ERROR.getMessage());
     }
 
     private boolean isSameName(MenuItem menuItem, String menuName) {

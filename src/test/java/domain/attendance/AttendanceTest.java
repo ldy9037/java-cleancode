@@ -8,8 +8,21 @@ import static org.assertj.core.api.Assertions.*;
 public class AttendanceTest {
 
     @Test
-    @DisplayName("출석부에 없는 유형의 출석타입을 기록할 경우 에러가 발생한다.")
+    @DisplayName("출석을 기록한다.")
     void createAttendance() {
+        // given
+        char type = 'A';
+
+        // when
+        Attendance attendance = new Attendance(type);
+
+        // then 
+        assertThat(attendance.getType()).isEqualTo(type);
+    }
+
+    @Test
+    @DisplayName("출석부에 없는 유형의 출석타입을 기록할 경우 에러가 발생한다.")
+    void createNotExistAttendance() {
         // given 
         char type = 'C';
         

@@ -13,6 +13,10 @@ public class Attendance {
         this.type = type;
     }
 
+    public char getType() {
+        return type;
+    }
+
     private void validate(char type) {
         if (!hasType(type)) {
             throw new IllegalArgumentException("출석 유형은 A, L, P 중 하나여야 합니다.");

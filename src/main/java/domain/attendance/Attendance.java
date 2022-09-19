@@ -1,14 +1,18 @@
 package domain.attendance;
 
+import java.util.List;
+
 public class Attendance {
     
-    private final AttendanceType attendanceType;
+    private static final char[] TYPE = {'A', 'L', 'P'};
 
-    Attendance(AttendanceType attendanceType) {
+    private final char attendanceType;
+
+    Attendance(char attendanceType) {
         this.attendanceType = attendanceType;
     }
 
-    public AttendanceType getType() {
+    public char getType() {
         return attendanceType;
     }
 }

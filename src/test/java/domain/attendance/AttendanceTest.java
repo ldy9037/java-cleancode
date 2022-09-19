@@ -14,6 +14,6 @@ public class AttendanceTest {
         Attendance attendance = new Attendance(AttendanceType.ATTENDANCE);
 
         // then 
-        assertThat(attendance.getType()).isEqualTo(type);
+        assertThat(attendance.getType()).isEqualTo(AttendanceType.ATTENDANCE);
     }
 }

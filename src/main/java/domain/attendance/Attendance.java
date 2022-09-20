@@ -1,11 +1,12 @@
 package domain.attendance;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Attendance {
     
-    private static final char[] TYPES = {'A', 'L', 'P'};
+    public static final char[] TYPES = {'A', 'L', 'P'};
 
     private final char attendanceType;
 
@@ -28,5 +29,20 @@ public class Attendance {
         return IntStream.range(0, TYPES.length)
                         .mapToObj(i -> TYPES[i])
                         .anyMatch(c -> c == type);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Attendance)) return false;
+        
+        Attendance that = (Attendance) obj;
+
+        return attendanceType == that.attendanceType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(attendanceType);
     }
 }

@@ -5,10 +5,12 @@ import java.util.Map;
 public class AttendanceRule {
     public static final int ALLOWED_ABSENCE_COUNT = 3;
 
+    private RuleItemFactory ruleItemFactory;
     private int score;
     private int absence;
 
     AttendanceRule() {
+        ruleItemFactory = new RuleItemFactory();
         this.score = 0;
         this.absence = 0;
     }
@@ -19,7 +21,10 @@ public class AttendanceRule {
      */
     public void calculate(Map<Attendance, Integer> attendanceStatus) {
         for (Attendance attendance : attendanceStatus.keySet()) {
-            reflect(attendance, attendanceStatus.get(attendance));
+            RuleItem ruleItem = ruleItemFactory.createRuleItem(attendance);
+            
+            score += ruleItem.score(attendanceStatus.get(attendance));
+            absence -= ruleItem.absence(attendanceStatus.get(attendance));
         }
     }
 
@@ -30,20 +35,4 @@ public class AttendanceRule {
 
         return score; 
     }
-
-    private void reflect(Attendance attendance, int count) {
-        if (attendance.getType() == 'A') {
-            score += count;
-        } 
-
-        if (attendance.getType() == 'L') {
-            absence += count / 3;
-        } 
-
-        if (attendance.getType() == 'P') {
-            score -= count;
-            absence += count;
-        } 
-    }
-
 }

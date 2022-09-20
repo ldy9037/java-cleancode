@@ -9,8 +9,8 @@ public class RuleItemFactory {
                 return new RuleItemLate();
             case 'P':
                 return new RuleItemAbsence();
+            default :
+                throw new IllegalArgumentException("A, L, P 출석 유형만 규칙이 존재합니다."); 
         }
-
-        return null;
     }
 }

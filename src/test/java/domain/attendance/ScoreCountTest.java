@@ -20,4 +20,15 @@ public class ScoreCountTest {
         assertThat(scoreCount.getCount()).isEqualTo(count);
     }
 
+    @Test 
+    @DisplayName("0 이상의 정수가 아니면 에러를 반환한다.")
+    void createWithWrongRangeCount() {
+        // given
+        int wrongRangeCount = -3;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                                .isThrownBy(() -> new ScoreCount(wrongRangeCount))
+                                .withMessage(String.format("점수는 %s 이상이어야 합니다.", ScoreCount.MINIMUM_COUNT));
+    }
 }

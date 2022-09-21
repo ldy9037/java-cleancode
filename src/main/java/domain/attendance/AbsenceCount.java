@@ -25,7 +25,7 @@ public class AbsenceCount {
     }
 
     private boolean isValid(int count) {
-        return (count > MINIMUM_COUNT);
+        return (count >= MINIMUM_COUNT);
     }
 
 }

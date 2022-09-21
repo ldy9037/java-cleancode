@@ -31,4 +31,19 @@ public class ScoreCountTest {
                                 .isThrownBy(() -> new ScoreCount(wrongRangeCount))
                                 .withMessage(String.format("점수는 %s 이상이어야 합니다.", ScoreCount.MINIMUM_COUNT));
     }
+
+    @Test
+    @DisplayName("점수를 추가한다.")
+    void addCount() {
+        // given 
+        int initialCount = 3;
+        int addCount = 5;
+
+        // when 
+        ScoreCount scoreCount = new ScoreCount(initialCount);
+        scoreCount.addCount(addCount);
+
+        // then
+        assertThat(scoreCount.getCount()).isEqualTo(initialCount + addCount);
+    }
 }

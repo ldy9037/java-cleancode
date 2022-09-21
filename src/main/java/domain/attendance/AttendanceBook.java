@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class AttendanceBook {
     
@@ -24,7 +25,6 @@ public class AttendanceBook {
     }
 
     public List<Integer> ranking() {
-        List<Integer> result = new ArrayList<>();
         PriorityQueue queue = new PriorityQueue<>(Collections.reverseOrder());
         
         for (int i = 0; i < attendancesList.size(); i++) {
@@ -34,6 +34,12 @@ public class AttendanceBook {
             queue.add(new Score(i, attendanceRule.getScore()));
         }
 
+        return toList(queue);
+    }
+
+    private List<Integer> toList(PriorityQueue queue) {
+        List<Integer> result = new ArrayList<>();
+        
         while (!queue.isEmpty()) {
             Score score = (Score) queue.poll();
             result.add(score.getNumber());

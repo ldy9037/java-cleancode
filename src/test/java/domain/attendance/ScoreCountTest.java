@@ -46,4 +46,19 @@ public class ScoreCountTest {
         // then
         assertThat(scoreCount.getCount()).isEqualTo(initialCount + addCount);
     }
+
+    @Test
+    @DisplayName("점수를 제거한다.")
+    void subCount() {
+        // given
+        int initialCount = 5;
+        int subCount = 3;
+
+        // when
+        ScoreCount scoreCount = new ScoreCount(initialCount);
+        scoreCount.subCount(subCount);
+
+        // then
+        assertThat(scoreCount.getCount()).isEqualTo(initialCount - subCount);
+    }
 }

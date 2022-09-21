@@ -6,7 +6,8 @@ public class ScoreCount {
     private int count = 0;
 
     ScoreCount(int count) {
-        addCount(count);
+        validate(count);
+        this.count = count;
     }
 
     public int getCount() {
@@ -14,8 +15,11 @@ public class ScoreCount {
     }
 
     public void addCount(int count) {
-        validate(count);
         this.count += count;
+    }
+
+    public void subCount(int count) {
+        this.count -= count;
     }
 
     private void validate(int count) {

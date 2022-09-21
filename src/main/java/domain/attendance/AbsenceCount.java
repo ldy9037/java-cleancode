@@ -19,13 +19,13 @@ public class AbsenceCount {
     }
 
     private void validate(int count) {
-        if (isValid(count)) {
+        if (!isValid(count)) {
             throw new IllegalArgumentException("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.");
         }
     }
 
     private boolean isValid(int count) {
-        return (count < MINIMUM_COUNT);
+        return (count > MINIMUM_COUNT);
     }
 
 }

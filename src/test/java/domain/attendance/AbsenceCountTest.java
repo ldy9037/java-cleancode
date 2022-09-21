@@ -32,4 +32,19 @@ public class AbsenceCountTest {
                                 .withMessage("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.");
     }
 
+    @Test
+    @DisplayName("지각 횟수를 추가한다.")
+    void addCount() {
+        // given 
+        int initialCount = 3;
+        int addCount = 5;
+
+        // when
+        AbsenceCount absenceCount = new AbsenceCount(initialCount);
+        absenceCount.addCount(addCount);
+
+        // then
+        assertThat(absenceCount.getCount()).isEqualTo(initialCount + addCount);
+    }
+
 }

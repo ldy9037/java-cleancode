@@ -3,15 +3,19 @@ package domain.attendance;
 public class AbsenceCount {
     public static final int MINIMUM_COUNT = 0;
 
-    private int count;
+    private int count = 0;
 
     AbsenceCount(int count) {
-        validate(count);
-        this.count = count;
+        addCount(count);
     }
 
     public int getCount() {
         return count;
+    }
+
+    public void addCount(int count) {
+        validate(count);
+        this.count += count;
     }
 
     private void validate(int count) {

@@ -20,4 +20,16 @@ public class AbsenceCountTest {
         assertThat(absenceCount.getCount()).isEqualTo(count);
     }
 
+    @Test
+    @DisplayName("0 이상의 정수가 아니면 에러를 반환한다.")
+    void createWithWrongRangeCount() {
+        // given 
+        int wrongRangeCount = -3;
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                                .isThrownBy(() -> new AbsenceCount(wrongRangeCount))
+                                .withMessage("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.");
+    }
+
 }

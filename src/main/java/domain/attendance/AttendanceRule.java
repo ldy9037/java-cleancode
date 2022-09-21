@@ -2,6 +2,12 @@ package domain.attendance;
 
 import java.util.Map;
 
+/**
+ * 원시 타입이 포장되지 않음. 
+ * 점수 자체를 의미하는 객체가 필요하지 않은지? 
+ * AttendanceRule이 너무 많은 책임을 가지고 있는 것은 아닌지?
+ * Score 객체와 AttendanceRule간의 책임을 명확히 할 필요 있음. 
+ */
 public class AttendanceRule {
     public static final int ALLOWED_ABSENCE_COUNT = 3;
 
@@ -15,10 +21,6 @@ public class AttendanceRule {
         this.absence = 0;
     }
 
-    /*
-     * 명령 쿼리 원칙을 따르지 않음.
-     * score 요청을 별도의 인터페이스로 분리하는 것은 어떨지?
-     */
     public void calculate(Map<Attendance, Integer> attendanceStatus) {
         for (Attendance attendance : attendanceStatus.keySet()) {
             RuleItem ruleItem = ruleItemFactory.createRuleItem(attendance);

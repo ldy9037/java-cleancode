@@ -14,13 +14,17 @@ public class AttendanceBook {
     }
 
     public static AttendanceBook of(String... attendancesArr) {
-        List<Attendances> attendancesList = new ArrayList<>();
+        return new AttendanceBook(convertAttendancesList(attendancesArr));
+    }
+
+    private static List<Attendances> convertAttendancesList(String... attendancesArr) {
+        List<Attendances> result = new ArrayList<>();
 
         for (String attendances : attendancesArr) {
-            attendancesList.add(Attendances.of(attendances));
+            result.add(Attendances.of(attendances));
         }
 
-        return new AttendanceBook(attendancesList);
+        return result;
     }
 
     public List<Integer> ranking() {

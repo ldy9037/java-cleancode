@@ -9,56 +9,26 @@ public class ScoreCountTest {
     
     @Test
     @DisplayName("점수를 반환한다.")
-    void getCount() {
+    void getScore() {
         // given 
-        int count = 5;
+        int score = 5;
 
         // when
-        ScoreCount scoreCount = new ScoreCount(count);
+        ScoreCount scoreCount = new ScoreCount(score);
 
         // given
-        assertThat(scoreCount.getCount()).isEqualTo(count);
+        assertThat(scoreCount.getCount()).isEqualTo(score);
     }
 
     @Test 
-    @DisplayName("0 이상의 정수가 아니면 에러를 반환한다.")
-    void createWithWrongRangeCount() {
+    @DisplayName("점수가 0점 미만이면 에러가 발생한다.")
+    void createWithWrongRangeScore() {
         // given
-        int wrongRangeCount = -3;
+        int wrongRangeScore = -3;
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                                .isThrownBy(() -> new ScoreCount(wrongRangeCount))
-                                .withMessage(String.format("점수는 %s 이상이어야 합니다.", ScoreCount.MINIMUM_COUNT));
-    }
-
-    @Test
-    @DisplayName("점수를 추가한다.")
-    void addCount() {
-        // given 
-        int initialCount = 3;
-        int addCount = 5;
-
-        // when 
-        ScoreCount scoreCount = new ScoreCount(initialCount);
-        scoreCount.addCount(addCount);
-
-        // then
-        assertThat(scoreCount.getCount()).isEqualTo(initialCount + addCount);
-    }
-
-    @Test
-    @DisplayName("점수를 제거한다.")
-    void subCount() {
-        // given
-        int initialCount = 5;
-        int subCount = 3;
-
-        // when
-        ScoreCount scoreCount = new ScoreCount(initialCount);
-        scoreCount.subCount(subCount);
-
-        // then
-        assertThat(scoreCount.getCount()).isEqualTo(initialCount - subCount);
+                                .isThrownBy(() -> new ScoreCount(wrongRangeScore))
+                                .withMessage(String.format("점수는 0 이상의 정수로만 생성 가능합니다."));
     }
 }

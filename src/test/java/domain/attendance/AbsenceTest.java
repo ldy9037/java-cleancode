@@ -21,7 +21,7 @@ public class AbsenceTest {
     }
 
     @Test
-    @DisplayName("지각 횟수로 최소값 미만의 정수를 전달하면 에러를 반환한다.")
+    @DisplayName("지각이 0번 미만일 경우 에러가 발생한다.")
     void createWithWrongRangeCount() {
         // given 
         int wrongRangeCount = -3;
@@ -29,22 +29,6 @@ public class AbsenceTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                                 .isThrownBy(() -> new Absence(wrongRangeCount))
-                                .withMessage(String.format("지각 횟수는 %d 이상의 정수만 지정할 수 있습니다.", Absence.MINIMUM_COUNT));
+                                .withMessage("지각 횟수는 0번 이상만 지정할 수 있습니다.");
     }
-
-    @Test
-    @DisplayName("지각 횟수를 추가한다.")
-    void addCount() {
-        // given 
-        int initialCount = 3;
-        int addCount = 5;
-
-        // when
-        Absence absence = new Absence(initialCount);
-        absence.addCount(addCount);
-
-        // then
-        assertThat(absence.getCount()).isEqualTo(initialCount + addCount);
-    }
-
 }

@@ -1,9 +1,8 @@
 package domain.attendance;
 
 public class ScoreCount {
-    public static final int MINIMUM_COUNT = 0;
 
-    private int count = 0;
+    private final int count;
 
     ScoreCount(int count) {
         validate(count);
@@ -14,21 +13,13 @@ public class ScoreCount {
         return count;
     }
 
-    public void addCount(int count) {
-        this.count += count;
-    }
-
-    public void subCount(int count) {
-        this.count -= count;
-    }
-
     private void validate(int count) {
         if (!isValid(count)) {
-            throw new IllegalArgumentException(String.format("점수는 %s 이상이어야 합니다.", MINIMUM_COUNT));
+            throw new IllegalArgumentException("점수는 0 이상의 정수로만 생성 가능합니다.");
         }
     }
 
     private boolean isValid(int count) {
-        return (count >= MINIMUM_COUNT);
+        return (count >= 0);
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class AbsenceCountTest {
+public class AbsenceTest {
     
     @Test
     @DisplayName("지각 횟수를 반환한다.")
@@ -14,22 +14,22 @@ public class AbsenceCountTest {
         int count = 5;
 
         // when
-        AbsenceCount absenceCount = new AbsenceCount(count);
+        Absence absence = new Absence(count);
 
         // then
-        assertThat(absenceCount.getCount()).isEqualTo(count);
+        assertThat(absence.getCount()).isEqualTo(count);
     }
 
     @Test
-    @DisplayName("0 이상의 정수가 아니면 에러를 반환한다.")
+    @DisplayName("지각 횟수로 최소값 미만의 정수를 전달하면 에러를 반환한다.")
     void createWithWrongRangeCount() {
         // given 
         int wrongRangeCount = -3;
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                                .isThrownBy(() -> new AbsenceCount(wrongRangeCount))
-                                .withMessage("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.");
+                                .isThrownBy(() -> new Absence(wrongRangeCount))
+                                .withMessage(String.format("지각 횟수는 %d 이상의 정수만 지정할 수 있습니다.", Absence.MINIMUM_COUNT));
     }
 
     @Test
@@ -40,11 +40,11 @@ public class AbsenceCountTest {
         int addCount = 5;
 
         // when
-        AbsenceCount absenceCount = new AbsenceCount(initialCount);
-        absenceCount.addCount(addCount);
+        Absence absence = new Absence(initialCount);
+        absence.addCount(addCount);
 
         // then
-        assertThat(absenceCount.getCount()).isEqualTo(initialCount + addCount);
+        assertThat(absence.getCount()).isEqualTo(initialCount + addCount);
     }
 
 }

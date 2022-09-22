@@ -1,11 +1,11 @@
 package domain.attendance;
 
-public class AbsenceCount {
+public class Absence {
     public static final int MINIMUM_COUNT = 0;
 
     private int count = 0;
 
-    AbsenceCount(int count) {
+    Absence(int count) {
         addCount(count);
     }
 
@@ -20,7 +20,7 @@ public class AbsenceCount {
 
     private void validate(int count) {
         if (!isValid(count)) {
-            throw new IllegalArgumentException("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.");
+            throw new IllegalArgumentException(String.format("지각 횟수는 0 이상의 정수만 지정할 수 있습니다.", MINIMUM_COUNT));
         }
     }
 

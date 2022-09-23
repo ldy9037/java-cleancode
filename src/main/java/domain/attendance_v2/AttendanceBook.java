@@ -5,7 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AttendanceBook {
-    
+    public static final int MAX_ALLOW_ABSENCE = 3;
+
     private final List<List<Character>> book;
 
     AttendanceBook(List<List<Character>> book) {
@@ -32,6 +33,7 @@ public class AttendanceBook {
 
     public int calculate(List<Character> attendances) {
         int score = 0;
+        int absence = 0;
 
         for (Character attendance : attendances) {
             if (attendance == 'A') {
@@ -39,9 +41,14 @@ public class AttendanceBook {
             }
             if (attendance == 'P') {
                 score -= 1;
+                absence += 1;
             }
         }
         
+        if (absence >= MAX_ALLOW_ABSENCE) {
+            score = 0;
+        }
+
         return score;
     }
 }

@@ -40,6 +40,19 @@ public class AttendanceBookTest {
         assertThat(attendanceBook.getScore(0)).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("점수가 음수가 될 경우 0점으로 처리한다.")
+    void getMinusScore() {
+        // given 
+        String[] attendances = {"P"};
+        
+        // when
+        AttendanceBook attendanceBook = AttendanceBook.of(attendances);
+        
+        // given 
+        assertThat(attendanceBook.getScore(0)).isEqualTo(0);
+    }
+
     private String generateAttendances(String type, int count) {
         return Stream.generate(() -> type).limit(count)
                                     .reduce((a, b) -> a + b)

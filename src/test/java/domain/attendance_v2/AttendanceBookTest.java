@@ -26,10 +26,10 @@ public class AttendanceBookTest {
     }
 
     @Test
-    @DisplayName("결석이 최소값 이상 포함되어 있으면 0점 처리한다.")
+    @DisplayName("결석 횟수가 최대 허용 값을 초과하면 0점 처리한다.")
     void getScoreWithMaxiumAbsence() {
         // given 
-        String absence = generateAttendances("P", AttendanceBook.MAX_ALLOW_ABSENCE);
+        String absence = generateAttendances("P", AttendanceBook.MAX_ALLOW_ABSENCE + 1);
         String attendance = generateAttendances("A", AttendanceBook.MAX_ALLOW_ABSENCE + 2);
         String[] attendances = {absence + attendance};
 

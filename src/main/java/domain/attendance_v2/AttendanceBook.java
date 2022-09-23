@@ -45,7 +45,7 @@ public class AttendanceBook {
             }
         }
         
-        if (absence >= MAX_ALLOW_ABSENCE) {
+        if (absence > MAX_ALLOW_ABSENCE) {
             score = 0;
         }
 

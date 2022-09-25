@@ -14,21 +14,25 @@ public class Board {
 
     public List<Integer> ranking() {
         for (int i = 0; i < attendanceBook.count(); i++) {
-            ranking.add(search(i), i + 1);
+            ranking.add(searchIndex(i), i + 1);
         }
 
         return ranking;
     }
 
-    private int search(int newStudent) {
+    private int searchIndex(int newStudent) {
         int result = 0;
 
         for (int student : ranking) {
-            if (attendanceBook.getScore(newStudent) <= attendanceBook.getScore(student - 1)) {
+            if (!isGreater(newStudent, student - 1)) {
                 result++;
             }
         }
 
         return result;
+    }
+
+    private boolean isGreater(int index, int that) {
+        return (attendanceBook.getScore(index) > attendanceBook.getScore(that));
     }
 }

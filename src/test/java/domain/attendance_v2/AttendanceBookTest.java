@@ -10,6 +10,19 @@ import java.util.stream.Stream;
 public class AttendanceBookTest {
 
     @Test
+    @DisplayName("학생 총 인원을 반환한다.")
+    void count() {
+        // given
+        String[] attendances = {"PPAP", "AL", "APLAPL", "ALAA"};
+        
+        // when
+        int studentCount = AttendanceBook.of(attendances).count();
+
+        // then
+        assertThat(studentCount).isEqualTo(attendances.length);
+    }
+
+    @Test
     @DisplayName("출석 점수를 확인한다.")
     void getScore() {
         // given 
@@ -58,5 +71,4 @@ public class AttendanceBookTest {
                                     .reduce((a, b) -> a + b)
                                     .get();
     }
-
 }

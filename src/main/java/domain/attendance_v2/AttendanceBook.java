@@ -27,6 +27,10 @@ public class AttendanceBook {
                     .collect(Collectors.toList());
     }
 
+    public int count() {
+        return book.size();
+    }
+    
     public int getScore(Integer id) {
         return calculate(book.get(id));
     }

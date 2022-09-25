@@ -31,7 +31,7 @@ public class AttendanceBook {
         return calculate(book.get(id));
     }
 
-    public int calculate(List<Character> attendances) {
+    private int calculate(List<Character> attendances) {
         int score = 0;
         int absence = 0;
 

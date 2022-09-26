@@ -11,6 +11,14 @@ public class Score {
         this.score = score;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void add(int score) {
+        this.score += score;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

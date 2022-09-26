@@ -19,4 +19,19 @@ public class ScoreTest {
         // then 
         assertThat(score).isEqualTo(new Score(sampleScore));
     }
+
+    @Test
+    @DisplayName("점수를 더한다.")
+    void add() {
+        // given 
+        int moreScore = 10;
+        
+        // when
+        Score score = new Score(moreScore);
+        score.add(moreScore);
+
+        // then
+        assertThat(score.getScore()).isEqualTo(moreScore * 2);
+    }
+    
 }

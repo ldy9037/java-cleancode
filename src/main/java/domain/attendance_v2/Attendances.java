@@ -20,11 +20,15 @@ public class Attendances {
             caution += attendance.caution();
         }
 
-        if (ExceededAllowedCaution()) return 0; 
+        if (ExceededAllowedCaution() || isMinusScore(result)) return 0; 
         return result;
     }
 
     private boolean ExceededAllowedCaution() {
         return (caution > MAX_ALLOW_CAUTION);
+    }
+
+    private boolean isMinusScore(int score) {
+        return (score < 0);
     }
 }

@@ -31,7 +31,7 @@ public class AttendacnesTest {
     }
 
     @Test
-    @DisplayName("결석 횟수가 최대 허용 값을 초과하면 0점 처리한다.")
+    @DisplayName("경고 횟수가 최대 허용 값을 초과하면 0점 처리한다.")
     void getScoreWithMaxiumAbsence() {
         // given 
         String absence = generateAttendances("P", Attendances.MAX_ALLOW_CAUTION + 1);
@@ -41,6 +41,17 @@ public class AttendacnesTest {
         int score = attendances.calculate(absence + attendance);
 
         // then 
+        assertThat(score).isEqualTo(0);
+    }
+
+
+    @Test
+    @DisplayName("점수가 음수가 될 경우 0점으로 처리한다.")
+    void getMinusScore() {
+        // when
+        int score = attendances.calculate("P");
+        
+        // given 
         assertThat(score).isEqualTo(0);
     }
 

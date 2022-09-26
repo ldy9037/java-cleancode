@@ -8,6 +8,7 @@ public class Score {
     private int score;
 
     public Score(int score) {
+        validate(score);
         this.score = score;
     }
 

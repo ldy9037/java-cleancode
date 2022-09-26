@@ -21,6 +21,18 @@ public class ScoreTest {
     }
 
     @Test
+    @DisplayName("생성자의 인자가 음수일 경우 에러를 반환한다.")
+    void createWithMinusScore() {
+        // given
+        int minusScore = -10;
+        
+        // when 
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                                .isThrownBy(() -> new Score(minusScore))
+                                .withMessage("점수는 양수로 입력해주세요.");
+    }
+
+    @Test
     @DisplayName("점수를 더한다.")
     void add() {
         // given 

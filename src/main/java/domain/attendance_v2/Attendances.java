@@ -1,7 +1,5 @@
 package domain.attendance_v2;
 
-import java.util.List;
-
 public class Attendances {
     public static final int MAX_ALLOW_CAUTION = 9;
 

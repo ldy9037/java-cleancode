@@ -7,4 +7,9 @@ public class Late implements Type{
     public int score() {
         return 0;
     }
+
+    @Override
+    public int caution() {
+        return 1;
+    }
 }

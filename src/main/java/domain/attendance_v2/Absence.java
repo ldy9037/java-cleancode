@@ -7,4 +7,9 @@ public class Absence implements Type{
     public int score() {
         return -1;
     }
+
+    @Override
+    public int caution() {
+        return 3;
+    }
 }

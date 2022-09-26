@@ -7,4 +7,9 @@ public class Attendance implements Type{
     public int score() {
         return 1;
     }
+
+    @Override
+    public int caution() {
+        return 0;
+    }
 }

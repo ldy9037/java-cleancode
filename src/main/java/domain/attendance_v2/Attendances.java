@@ -1,7 +1,12 @@
 package domain.attendance_v2;
 
+import java.util.List;
+
 public class Attendances {
+    public static final int MAX_ALLOW_CAUTION = 9;
+
     private final AttendanceFactory attendanceFactory;
+    private int caution = 0;
 
     public Attendances(AttendanceFactory attendanceFactory) {
         this.attendanceFactory = attendanceFactory;
@@ -12,8 +17,14 @@ public class Attendances {
 
         for (Type attendance : attendanceFactory.createTypeList(attendances)) {
             result += attendance.score();
+            caution += attendance.caution();
         }
 
+        if (ExceededAllowedCaution()) return 0; 
         return result;
+    }
+
+    private boolean ExceededAllowedCaution() {
+        return (caution > MAX_ALLOW_CAUTION);
     }
 }

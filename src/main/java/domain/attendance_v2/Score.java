@@ -21,6 +21,11 @@ public class Score {
         this.score += score;
     }
 
+    public void minus(int score) {
+        validate(score);
+        this.score -= score;
+    }
+
     private void validate(int score) {
         if (score < 0) {
             throw new IllegalArgumentException("점수는 양수로 입력해주세요.");

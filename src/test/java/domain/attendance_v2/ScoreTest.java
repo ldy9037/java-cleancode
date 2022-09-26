@@ -59,4 +59,18 @@ public class ScoreTest {
                                 .withMessage("점수는 양수로 입력해주세요.");
     }
     
+    @Test
+    @DisplayName("점수를 뺀다.")
+    void minus() {
+        // given 
+        int moreScore = 10;
+        
+        // when
+        Score score = new Score(moreScore);
+        score.minus(moreScore);
+
+        // then
+        assertThat(score.getScore()).isEqualTo(0);
+    }
+
 }

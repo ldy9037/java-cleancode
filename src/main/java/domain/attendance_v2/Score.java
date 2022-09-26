@@ -16,7 +16,14 @@ public class Score {
     }
 
     public void add(int score) {
+        validate(score);
         this.score += score;
+    }
+
+    private void validate(int score) {
+        if (score < 0) {
+            throw new IllegalArgumentException("점수는 양수로 입력해주세요.");
+        }
     }
 
     @Override

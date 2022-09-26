@@ -33,5 +33,18 @@ public class ScoreTest {
         // then
         assertThat(score.getScore()).isEqualTo(moreScore * 2);
     }
+
+    @Test
+    @DisplayName("점수 인자가 음수일 경우 에러를 반환한다.")
+    void addWithMinusScore() {
+        // given
+        int minusScore = -10;
+        Score score = new Score(0);
+        
+        // when 
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                                .isThrownBy(() -> score.add(minusScore))
+                                .withMessage("점수는 양수로 입력해주세요.");
+    }
     
 }
